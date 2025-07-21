@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "3q58PCygvuMa5VY7nwgkHx2EmnbUxuZS4VG1Nm+DYoP6wGjLXB/7P2GfFJkJcOXafDWaL7onEKx6JWudvjvmTA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Aplication\\Tiendas.Aplication.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aldov\\.nuget\\packages\\mediatr\\12.2.0\\mediatr.12.2.0.nupkg.sha512",
+    "C:\\Users\\aldov\\.nuget\\packages\\mediatr.contracts\\2.0.1\\mediatr.contracts.2.0.1.nupkg.sha512",
+    "C:\\Users\\aldov\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}

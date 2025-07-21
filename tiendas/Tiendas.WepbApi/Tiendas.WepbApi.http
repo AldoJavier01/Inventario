@@ -1,0 +1,6 @@
+@Tiendas.WepbApi_HostAddress = http://localhost:5012
+
+GET {{Tiendas.WepbApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
