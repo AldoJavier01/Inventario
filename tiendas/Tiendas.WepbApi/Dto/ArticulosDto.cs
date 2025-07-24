@@ -14,7 +14,7 @@
 
         public double Weight { get; set; }
 
-        public string Tallas { get; set; }
+       
 
         public string Tipos { get; set; }
 

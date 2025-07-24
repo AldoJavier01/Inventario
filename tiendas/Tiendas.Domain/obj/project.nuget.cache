@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "JdJQTfqkK6ApWuPvHkYMY+2iPjWNaN8XINMg4xnqfdlnHIM3P3KTPa1DyaeHGQWjNGvIkmnBcsmPYHSd8eSf3Q==",
+  "dgSpecHash": "efB5z7Q12+6K7HxAXO+aoHELnKiluDvv9SCsdW2+0Ddpe0xRt6DOk9Hpu6d4kbfXRfbfn15yAMT6xajZOy81mg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
+  "projectFilePath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

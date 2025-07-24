@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "dxVGIu/lDVCuiOAFiIskdJouVr2qSc9PsfePW+e8vvPckCOzbbHzzZ80Hh3XcO/WjZBK5SsAG0ziVrUYmi3YSg==",
+  "dgSpecHash": "7NuugOhEDK1oFoofw+Be1YIvEhu9zHUhtr7Crw0kF7PYay0WZKH7o0rRFaoYJmipO5khlM2UyVPYaW3Kxp1nHw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.WepbApi\\Tiendas.WepbApi.csproj",
+  "projectFilePath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.WepbApi\\Tiendas.WepbApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aldov\\.nuget\\packages\\aspnetcore.healthchecks.ui.client\\8.0.0\\aspnetcore.healthchecks.ui.client.8.0.0.nupkg.sha512",
     "C:\\Users\\aldov\\.nuget\\packages\\aspnetcore.healthchecks.ui.core\\8.0.0\\aspnetcore.healthchecks.ui.core.8.0.0.nupkg.sha512",

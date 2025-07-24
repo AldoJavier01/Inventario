@@ -17,7 +17,7 @@ namespace Tiendas.Aplication.ArticulosStocks.Agregar
      string UrlImgs,
      double Price,
      double Weight,
-     string Tallas,
+     
      string Tipos,
      int IdShein,
      string SKU,
@@ -38,7 +38,7 @@ namespace Tiendas.Aplication.ArticulosStocks.Agregar
             {
                 await request.image.CopyToAsync(memoryStream);
                 var Articulo = new ArticulosStock(request.Name, request.Description, request.Category, request.UrlImgs, request.Price
-                , request.Weight, request.Tallas, request.Tipos, request.IdShein, request.SKU, memoryStream.GetBuffer());
+                , request.Weight, request.Tipos, request.IdShein, request.SKU, memoryStream.GetBuffer());
                 _unitWork.ArticulosStockRepository.Add(Articulo);
                 await _unitWork.SalvarCambiosAsync(cancellationToken);
                 return Articulo.Id;

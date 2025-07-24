@@ -29,5 +29,15 @@ namespace Tiendas.Infrastructure.Persistence.Repositories
 
         public async Task<ArticulosStock> GetByIdShein(long id) => 
             await _context.ArticulosStocks.Where(a => a.IdShein == (int)id).FirstOrDefaultAsync();
+
+        public void Delete (ArticulosStock articulosStock)
+        {
+            _context.Remove(articulosStock);
+        }
+
+        public void Update(ArticulosStock articulosStock)
+        {
+            _context.Update(articulosStock);
+        }
     }
 }

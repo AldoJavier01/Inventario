@@ -2765,11 +2765,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
+      "projectUniqueName": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
       "projectName": "Tiendas.Infrastructure",
-      "projectPath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
+      "projectPath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
       "packagesPath": "C:\\Users\\aldov\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Infrastructure\\obj\\",
+      "outputPath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Infrastructure\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aldov\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -2786,8 +2786,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Aplication\\Tiendas.Aplication.csproj": {
-              "projectPath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Aplication\\Tiendas.Aplication.csproj"
+            "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Aplication\\Tiendas.Aplication.csproj": {
+              "projectPath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Aplication\\Tiendas.Aplication.csproj"
             }
           }
         }

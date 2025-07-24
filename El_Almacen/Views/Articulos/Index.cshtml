@@ -21,24 +21,18 @@
             <th>
                 @Html.DisplayNameFor(model => model.Category)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.UrlImgs)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Price)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Weight)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Tallas)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Tipos)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdShein)
-            </th>
+          
             <th>
                 @Html.DisplayNameFor(model => model.SKU)
             </th>
@@ -61,24 +55,18 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Category)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.UrlImgs)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.Price)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Weight)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Tallas)
-                </td>
+               
                 <td>
                     @Html.DisplayFor(modelItem => item.Tipos)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdShein)
-                </td>
+                
                 <td>
                     @Html.DisplayFor(modelItem => item.SKU)
                 </td>
@@ -93,9 +81,9 @@
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new {Id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
                 </td>
             </tr>
         }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj": {}
+    "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj": {}
   },
   "projects": {
-    "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj": {
+    "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
+        "projectUniqueName": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
         "projectName": "Tiendas.Domain",
-        "projectPath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
+        "projectPath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\Tiendas.Domain.csproj",
         "packagesPath": "C:\\Users\\aldov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Domain\\obj\\",
+        "outputPath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\aldov\\AppData\\Roaming\\NuGet\\NuGet.Config",

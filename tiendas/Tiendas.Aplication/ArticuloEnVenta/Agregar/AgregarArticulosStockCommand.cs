@@ -10,7 +10,8 @@ namespace Tiendas.Aplication.ArticulosVentass.Agregar
      long IdArticulo,
      double Price,
      string NombreGestor,
-     string SKU) : IRequest<long>;
+     string SKU,
+     string Talla) : IRequest<long>;
     public sealed class AgregarArticulosVentasCommandHandler : IRequestHandler<AgregarArticulosVentasCommand, long>
     {
         private readonly IUnitOfWork _unitWork;
@@ -23,7 +24,7 @@ namespace Tiendas.Aplication.ArticulosVentass.Agregar
         }
         public async Task<long> Handle(AgregarArticulosVentasCommand request, CancellationToken cancellationToken)
         {
-            var Articulo = new ArticulosVentas(request.IdTienda, request.IdArticulo, request.Price, request.NombreGestor);
+            var Articulo = new ArticulosVentas(request.IdTienda, request.IdArticulo, request.Price, request.NombreGestor,request.Talla);
             _unitWork.ArticulosVentasRepository.Add(Articulo);
             await _unitWork.SalvarCambiosAsync(cancellationToken);
             return Articulo.Id;

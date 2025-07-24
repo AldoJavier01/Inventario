@@ -49,14 +49,13 @@ namespace Tiendas.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<double>("PrecioDeCompra")
+                        .HasColumnType("float");
+
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
                     b.Property<string>("SKU")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Tallas")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -123,11 +122,12 @@ namespace Tiendas.Infrastructure.Persistence.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("PrecioDeCompra")
-                        .HasColumnType("float");
-
                     b.Property<double>("PrecioVenta")
                         .HasColumnType("float");
+
+                    b.Property<string>("Talla")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 

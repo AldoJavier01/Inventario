@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "UsgKnz5tXHeC/J1y0Wc5RPQmlxpJVjJx7wvmeKKKdlTleEt1wwERC5wt67sJZModw10Z8+XVqfnmjAAA7UawRQ==",
+  "dgSpecHash": "RdDs+tnKtv8VlAN9fKYwV16rjihDq/xzGKG6Yb4KwgeYlWJ7mY2OfW6AnKuymx3tsTXMvMhHMWnPev78GFv+sw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aldov\\Videos\\SheinCuApi\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
+  "projectFilePath": "C:\\Users\\aldov\\Videos\\Inventario\\tiendas\\Tiendas.Infrastructure\\Tiendas.Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aldov\\.nuget\\packages\\azure.core\\1.25.0\\azure.core.1.25.0.nupkg.sha512",
     "C:\\Users\\aldov\\.nuget\\packages\\azure.identity\\1.7.0\\azure.identity.1.7.0.nupkg.sha512",

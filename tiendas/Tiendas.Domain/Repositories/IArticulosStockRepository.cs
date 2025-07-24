@@ -14,5 +14,7 @@ namespace Tiendas.Domain.Repositories
 
         Task<IEnumerable<ArticulosStock>> GetAll();
         Task<ArticulosStock> GetById(long id);
+        void Delete(ArticulosStock articulosStock);
+        void Update(ArticulosStock articulosStock);
     }
 }

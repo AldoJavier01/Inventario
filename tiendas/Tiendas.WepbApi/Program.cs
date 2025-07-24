@@ -5,23 +5,22 @@ using MediatR;
 using Microsoft.AspNetCore.Diagnostics;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using RasteresExternos.Application;
 using Tiendas.Aplication.ArticulosStocks.Agregar;
+using Tiendas.Aplication.ArticulosStocks.Editar;
 using Tiendas.Aplication.ArticulosVendido.Agregar;
 using Tiendas.Aplication.ArticulosVendidoss.Agregar;
 using Tiendas.Aplication.ArticulosVentass.Agregar;
 using Tiendas.Aplication.TiendaFisica.Agregar;
 using Tiendas.Aplication.TiendasFisiscas.Agregar;
-using Tiendas.Infrastructure.Persistence;
 using Tiendas.WepbApi.Dto;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 builder.Services.AddInfrastructure(builder.Configuration);
-builder.Services.AddApplication(); 
+builder.Services.AddApplication();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -89,25 +88,7 @@ app.MapHealthChecks("/liveness", new HealthCheckOptions
     Predicate = r => r.Name.Contains("self")
 });
 app.Map("error", () => Results.Problem()).ExcludeFromDescription();
-          
-app.MapPost("tiendas/ArticulosStock/", async ([FromForm] ArticulosDto command, IMediator mediator) =>
-{
-   
-        var result = await mediator.Send(new AgregarArticulosStockCommand(
-             command.Name,
-            command.Description,
-            command.Category,
-            command.UrlImgs,
-            command.Price,
-            command.Weight,
-            command.Tallas,
-            command.Tipos,
-            command.IdShein,
-            command.SKU,
-              command.image.OpenReadStream()));
 
-    return 200;
-}).WithOpenApi().DisableAntiforgery().WithFormOptions().Accepts<ArticulosDto>("multipart/form-data");
 
 app.MapPost("tiendas", async (AgregarTiendaCommand command, IMediator mediator) =>
 {
@@ -120,12 +101,53 @@ app.MapPost("tiendas/ArticulosVendidos", async (AgregarArticulosVendidoCommand c
     return Results.Ok(result);
 });
 
+#region Stock
+app.MapPost("tiendas/ArticulosStock/", async ([FromForm] ArticulosDto command, IMediator mediator) =>
+{
 
-app.MapGet("tiendas/ArticulosStock", async ( IMediator mediator) =>
+    var result = await mediator.Send(new AgregarArticulosStockCommand(
+         command.Name,
+        command.Description,
+        command.Category,
+        command.UrlImgs,
+        command.Price,
+        command.Weight
+        ,
+        command.Tipos,
+        command.IdShein,
+        command.SKU,
+          command.image.OpenReadStream()));
+
+    return 200;
+}).WithOpenApi().DisableAntiforgery().WithFormOptions().Accepts<ArticulosDto>("multipart/form-data");
+
+
+app.MapGet("tiendas/ArticulosStock", async (IMediator mediator) =>
 {
     var result = await mediator.Send(new ObtenerArticulosStockCommand());
     return Results.Ok(result);
 });
+
+app.MapGet("tiendas/ArticulosStock/Details/{Id}", async (long Id, IMediator mediator) =>
+{
+    var result = await mediator.Send(new DetalleArticulosVentasCommand(Id));
+    return Results.Ok(result);
+});
+
+app.MapDelete("tiendas/ArticulosStock/{Id}", async (long Id, IMediator mediator) =>
+{
+    var result = await mediator.Send(new EliminarArticulosVentasCommand(Id));
+    return Results.Ok(result);
+});
+
+app.MapPost("tiendas/ArticulosStock/Editar", async (EditarArticulosStockCommand Articulo, IMediator mediator) =>
+{
+    var result = await mediator.Send(Articulo);
+    return Results.Ok(result);
+});
+
+#endregion
+
 
 app.MapGet("tiendas/ArticulosVentas", async (IMediator mediator) =>
 {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using El_Almacen.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace El_Almacen.Controllers
@@ -21,9 +22,10 @@ namespace El_Almacen.Controllers
         }
 
         // GET: ArticulosController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(long Id)
         {
-            return View();
+            var result = await _apiService.ObtenerDetails(Id);
+            return View(result);
         }
 
         // GET: ArticulosController/Create
@@ -35,11 +37,13 @@ namespace El_Almacen.Controllers
         // POST: ArticulosController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(ArticulosDto model)
         {
             try
-            {
-                return RedirectToAction(nameof(Index));
+            { 
+                    await _apiService.AgregarArticulosAsync(model);
+               
+                    return RedirectToAction(nameof(Index));
             }
             catch
             {
@@ -69,9 +73,10 @@ namespace El_Almacen.Controllers
         }
 
         // GET: ArticulosController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int Id)
         {
-            return View();
+            var result = await _apiService.Delete(Id);
+            return RedirectToAction(nameof(Index));
         }
 
         // POST: ArticulosController/Delete/5

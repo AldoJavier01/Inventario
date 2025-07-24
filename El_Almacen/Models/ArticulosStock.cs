@@ -2,8 +2,7 @@
 {
     public class ArticulosStock
     {
-        private readonly int _id;
-        public int Id => _id;
+        public long Id { get; set; }
 
         public string Name { get; private set; }
 
@@ -17,33 +16,35 @@
 
         public double Weight { get; private set; }
 
-        public string Tallas { get; private set; }
-
+        public double PrecioDeCompra { get; private set; }
         public string Tipos { get; private set; }
 
         public int IdShein { get; private set; }
 
         public string SKU { get; private set; }
+
         public byte[] Image { get; private set; }
-        public ArticulosStock(string name,
+        public ArticulosStock(long id,
+                              string name,
                               string description,
                               string category,
                               string urlImgs,
                               double price,
                               double weight,
-                              string tallas,
+
                               string tipos,
                               int idShein,
                               string sKU,
                               byte[] image)
         {
+            Id = id;
             Name = name;
             Description = description;
             Category = category;
             UrlImgs = urlImgs;
             Price = price;
             Weight = weight;
-            Tallas = tallas;
+
             Tipos = tipos;
             IdShein = idShein;
             SKU = sKU;
