@@ -23,13 +23,7 @@ public class ApiService
         _httpClient = httpClient;
     }
    
-    public async Task<int> GetObjetosAsync()
-    {
-        var response = await _httpClient.GetAsync("api/objetos");
-        response.EnsureSuccessStatusCode();
-        var content = await response.Content.ReadAsStringAsync();
-        return JsonConvert.DeserializeObject<int>(content);
-    }
+   
 
     public async Task<long> AgregarArticulosAsync(ArticulosDto model)
     {
@@ -69,9 +63,9 @@ public class ApiService
 
     }
 
-    public async Task<int> Delete(long Id)
+    public async Task<int> Delete(long Id,string Delete)
     {
-        var response = await _httpClient.DeleteAsync($"tiendas/ArticulosStock/{Id}");
+        var response = await _httpClient.DeleteAsync($"{Delete}{Id}");
         response.EnsureSuccessStatusCode();
         var result = await response.Content.ReadAsStringAsync();
         return 200 ;

@@ -75,7 +75,7 @@ namespace El_Almacen.Controllers
         // GET: ArticulosController/Delete/5
         public async Task<ActionResult> Delete(int Id)
         {
-            var result = await _apiService.Delete(Id);
+            var result = await _apiService.Delete(Id, "tiendas/ArticulosStock/");
             return RedirectToAction(nameof(Index));
         }
 
