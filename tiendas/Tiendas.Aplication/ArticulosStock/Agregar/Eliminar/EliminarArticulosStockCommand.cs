@@ -2,11 +2,11 @@
 using Tiendas.Domain.Aggregates;
 using Tiendas.Domain.Repositories;
 
-namespace Tiendas.Aplication.ArticulosVentass.Agregar
+namespace Tiendas.Aplication.ArticulosStocks.Agregar
 {
 
-    public sealed record EliminarArticulosVentasCommand(long IdArticulo) : IRequest<long>;
-    public sealed class EliminarArticulosVentasCommandHandler : IRequestHandler<EliminarArticulosVentasCommand, long>
+    public sealed record EliminarArticuloStockCommand(long IdArticulo) : IRequest<long>;
+    public sealed class EliminarArticulosVentasCommandHandler : IRequestHandler<EliminarArticuloStockCommand, long>
     {
         private readonly IUnitOfWork _unitWork;
 
@@ -18,7 +18,7 @@ namespace Tiendas.Aplication.ArticulosVentass.Agregar
         }
 
 
-        public async Task<long> Handle(EliminarArticulosVentasCommand request, CancellationToken cancellationToken)
+        public async Task<long> Handle(EliminarArticuloStockCommand request, CancellationToken cancellationToken)
         {
             var result = await _unitWork.ArticulosStockRepository.GetById(request.IdArticulo);
             _unitWork.ArticulosStockRepository.Delete(result);

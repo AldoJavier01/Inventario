@@ -136,7 +136,7 @@ app.MapGet("tiendas/ArticulosStock/Details/{Id}", async (long Id, IMediator medi
 
 app.MapDelete("tiendas/ArticulosStock/{Id}", async (long Id, IMediator mediator) =>
 {
-    var result = await mediator.Send(new EliminarArticulosVentasCommand(Id));
+    var result = await mediator.Send(new EliminarArticuloStockCommand(Id));
     return Results.Ok(result);
 });
 

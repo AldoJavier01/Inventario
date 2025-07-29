@@ -8,5 +8,6 @@ namespace Tiendas.Domain.Repositories
         Task<ArticulosVentas> GetById(long id); 
 
         Task<IEnumerable<ArticulosVentas>> GetAll();
+        void Delete(ArticulosVentas articulo);
     }
 }

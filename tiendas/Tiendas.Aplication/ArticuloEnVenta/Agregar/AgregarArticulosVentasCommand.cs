@@ -8,6 +8,7 @@ namespace Tiendas.Aplication.ArticulosVentass.Agregar
     public sealed record AgregarArticulosVentasCommand(
      long IdTienda,
      long IdArticulo,
+     long Cantidad,
      double Price,
      string NombreGestor,
      string SKU,
@@ -24,7 +25,7 @@ namespace Tiendas.Aplication.ArticulosVentass.Agregar
         }
         public async Task<long> Handle(AgregarArticulosVentasCommand request, CancellationToken cancellationToken)
         {
-            var Articulo = new ArticulosVentas(request.IdTienda, request.IdArticulo, request.Price, request.NombreGestor,request.Talla);
+            var Articulo = new ArticulosVentas(request.IdTienda, request.IdArticulo, request.Price, request.NombreGestor,request.Talla,request.Cantidad);
             _unitWork.ArticulosVentasRepository.Add(Articulo);
             await _unitWork.SalvarCambiosAsync(cancellationToken);
             return Articulo.Id;

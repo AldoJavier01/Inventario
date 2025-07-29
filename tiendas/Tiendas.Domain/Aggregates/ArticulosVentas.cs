@@ -13,17 +13,19 @@ namespace Tiendas.Domain.Aggregates
         public long IdTienda { get;private set; }
         public long IdArticulo { get;private set; }
 
+        public long Cantidad { get;private set; }
         public string Talla { get;private set; }
         public double PrecioVenta { get;private set; }
         public string NombreGestor {  get;private set; }
 
-        public ArticulosVentas(long idTienda, long idArticulo, double precioVenta, string nombreGestor, string talla)
+        public ArticulosVentas(long idTienda, long idArticulo, double precioVenta, string nombreGestor, string talla, long cantidad)
         {
             IdTienda = idTienda;
             IdArticulo = idArticulo;
             PrecioVenta = precioVenta;
             NombreGestor = nombreGestor;
             Talla = talla;
+            Cantidad = cantidad;
         }
     }
 }

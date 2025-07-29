@@ -24,6 +24,10 @@ namespace Tiendas.Infrastructure.Persistence.Repositories
         public async Task<IEnumerable<ArticulosVentas>> GetAll()
             => await _context.ArticulosVentas.ToListAsync();
 
+        public void Delete(ArticulosVentas articulo)
+        {
+            _context.Remove(articulo);
+        }
         public async Task<ArticulosVentas> GetById(long id) =>
             await _context.ArticulosVentas.Where(a => a.Id == (int)id).FirstOrDefaultAsync();
     }
