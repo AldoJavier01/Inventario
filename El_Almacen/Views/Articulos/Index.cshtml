@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ArticulosStock>
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Articulos Stock";
 }
 
 <h1>Articulos</h1>
@@ -9,9 +9,12 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
-<table class="table">
+<<table class="fashion-table searchable-table">>
     <thead>
         <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SKU)
+            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name)
             </th>
@@ -33,9 +36,7 @@
                 @Html.DisplayNameFor(model => model.Tipos)
             </th>
           
-            <th>
-                @Html.DisplayNameFor(model => model.SKU)
-            </th>
+            
             <th>
                 @Html.DisplayNameFor(model => model.Image)
             </th>
@@ -46,6 +47,9 @@
         @foreach (var item in Model)
         {
             <tr>
+                <td>
+                    @Html.ActionLink(item.SKU.ToString(), "Details", "ArticulosVentas", new { Id = item.Id })
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Name)
                 </td>
@@ -67,9 +71,7 @@
                     @Html.DisplayFor(modelItem => item.Tipos)
                 </td>
                 
-                <td>
-                    @Html.DisplayFor(modelItem => item.SKU)
-                </td>
+               
                 <td>
                     @if (item.Image != null && item.Image.Length > 0)
                     {
@@ -81,10 +83,21 @@
                     }
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id }) |
+                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id}) |
                     @Html.ActionLink("Details", "Details", new {Id = item.Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { Id = item.Id })
+                    @Html.ActionLink("Ventas", "Create", "ArticulosVentas", new { IdArticulo = item.Id }, null)
+                
+                    <a asp-action="Delete" asp-route-id="@item.Id" title="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-trash trash-icon" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zm3-.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z" />
+                            <path fill-rule="evenodd"
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 1 1 0-2H5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2.5a1 1 0 0 1 1 1zM11 1v1H5V1h6z" />
+                        </svg>
+                    </a>
                 </td>
+
+                
             </tr>
         }
     </tbody>

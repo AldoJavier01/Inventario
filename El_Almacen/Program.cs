@@ -5,7 +5,7 @@ namespace El_Almacen
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-            builder.Services.AddHttpClient<ApiService>(client =>
+           builder.Services.AddHttpClient<ApiService>(client =>
             {
                 client.BaseAddress = new Uri(builder.Configuration["ApiBaseUrl"]);
             });

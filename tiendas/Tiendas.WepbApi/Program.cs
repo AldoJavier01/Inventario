@@ -101,8 +101,11 @@ app.MapPost("tiendas/ArticulosVendidos", async (AgregarArticulosVendidoCommand c
     return Results.Ok(result);
 });
 
+var Stock = app.MapGroup("tiendas/ArticulosStock").WithOpenApi().DisableAntiforgery().WithFormOptions();
+var Ventas = app.MapGroup("tiendas/ArticulosVentas").WithOpenApi().DisableAntiforgery().WithFormOptions();
+
 #region Stock
-app.MapPost("tiendas/ArticulosStock/", async ([FromForm] ArticulosDto command, IMediator mediator) =>
+Stock.MapPost("", async ([FromForm] ArticulosDto command, IMediator mediator) =>
 {
 
     var result = await mediator.Send(new AgregarArticulosStockCommand(
@@ -119,28 +122,28 @@ app.MapPost("tiendas/ArticulosStock/", async ([FromForm] ArticulosDto command, I
           command.image.OpenReadStream()));
 
     return 200;
-}).WithOpenApi().DisableAntiforgery().WithFormOptions().Accepts<ArticulosDto>("multipart/form-data");
+}).Accepts<ArticulosDto>("multipart/form-data");
 
 
-app.MapGet("tiendas/ArticulosStock", async (IMediator mediator) =>
+Stock.MapGet("", async (IMediator mediator) =>
 {
     var result = await mediator.Send(new ObtenerArticulosStockCommand());
     return Results.Ok(result);
 });
 
-app.MapGet("tiendas/ArticulosStock/Details/{Id}", async (long Id, IMediator mediator) =>
+Stock.MapGet("/Details/{Id}", async (long Id, IMediator mediator) =>
 {
-    var result = await mediator.Send(new DetalleArticulosVentasCommand(Id));
+    var result = await mediator.Send(new DetalleArticulosStockCommand(Id));
     return Results.Ok(result);
 });
 
-app.MapDelete("tiendas/ArticulosStock/{Id}", async (long Id, IMediator mediator) =>
+Stock.MapDelete("/{Id}", async (long Id, IMediator mediator) =>
 {
     var result = await mediator.Send(new EliminarArticuloStockCommand(Id));
     return Results.Ok(result);
 });
 
-app.MapPost("tiendas/ArticulosStock/Editar", async (EditarArticulosStockCommand Articulo, IMediator mediator) =>
+Stock.MapPost("/Editar", async (EditarArticulosStockCommand Articulo, IMediator mediator) =>
 {
     var result = await mediator.Send(Articulo);
     return Results.Ok(result);
@@ -149,21 +152,25 @@ app.MapPost("tiendas/ArticulosStock/Editar", async (EditarArticulosStockCommand 
 #endregion
 
 
-app.MapGet("tiendas/ArticulosVentas", async (IMediator mediator) =>
+Ventas.MapGet("", async (IMediator mediator) =>
 {
     var result = await mediator.Send(new ObtenerArticulosVentasCommand());
     return Results.Ok(result);
 });
-
-app.MapGet("tiendas/TiendasFisicas", async (IMediator mediator) =>
+Ventas.MapPost("", async (AgregarArticulosVentasCommand comand, IMediator mediator) =>
 {
-    var result = await mediator.Send(new ObtenerTiendasFisiscaCommand());
+    var result = await mediator.Send(comand);
     return Results.Ok(result);
 });
 
-app.MapGet("tiendas/ArticulosVendidos", async (IMediator mediator) =>
+Ventas.MapDelete("/{Id}", async (long Id, IMediator mediator) =>
 {
-    var result = await mediator.Send(new ObtenerArticulosVendidosCommand());
+    var result = await mediator.Send(new EliminarArticuloVentasCommand(Id));
+    return Results.Ok(result);
+});
+Ventas.MapGet("Codigo/{Id}", async (long Id, IMediator mediator) =>
+{
+    var result = await mediator.Send(new AgruparArticulosVentasCommand(Id));
     return Results.Ok(result);
 });
 

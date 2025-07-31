@@ -1,7 +1,10 @@
 ﻿using El_Almacen.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.SqlServer.Server;
 using Newtonsoft.Json;
 using System.Globalization;
 using System.Net.Http.Headers;
+using Tiendas.Domain.Aggregates;
 public sealed record AgregarArticulosStockCommand(
 string Name,
 string Description,
@@ -22,9 +25,9 @@ public class ApiService
     {
         _httpClient = httpClient;
     }
-   
-   
 
+
+    #region Stock
     public async Task<long> AgregarArticulosAsync(ArticulosDto model)
     {
         using var formData = new MultipartFormDataContent();
@@ -72,13 +75,50 @@ public class ApiService
 
     }
 
-
-
     public async Task<IEnumerable<ArticulosStock>> ObtenerArticulosStockAsync()
     {
         var response = await _httpClient.GetAsync("tiendas/ArticulosStock");
         response.EnsureSuccessStatusCode();
         var result = await response.Content.ReadAsStringAsync();
         return JsonConvert.DeserializeObject<IEnumerable<ArticulosStock>>(result);
+    }
+    #endregion
+
+    public async Task<IEnumerable<ArticulosVentas>> ObtenerDetailsVentas(long Id)
+    {
+        var response = await _httpClient.GetAsync($"tiendas/ArticulosVentas/Codigo/{Id}");
+        response.EnsureSuccessStatusCode();
+        var result = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<IEnumerable<ArticulosVentas>>(result);
+
+    }
+
+    
+
+    public async Task<IEnumerable<ArticulosVentas>> ObtenerArticulosVentasAsync()
+    {
+        var response = await _httpClient.GetAsync("tiendas/ArticulosVentas");
+        response.EnsureSuccessStatusCode();
+        var result = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<IEnumerable<ArticulosVentas>>(result);
+    }
+
+    public async  Task<long> AgregarVentas (ArticulosVentas model)
+    {
+        var command = new
+        {
+            IdTienda = model.IdTienda,
+            IdArticulo = model.IdArticulo,
+            Cantidad = model.Cantidad,
+            Price = model.PrecioVenta ,// Asegúrate de mapear correctamente
+            Talla = model.Talla
+        };
+
+        var response = await _httpClient.PostAsJsonAsync("tiendas/ArticulosVentas", command);
+        response.EnsureSuccessStatusCode();
+        response.EnsureSuccessStatusCode();
+
+        var result = await response.Content.ReadAsStringAsync();
+        return JsonConvert.DeserializeObject<long>(result);
     }
 }

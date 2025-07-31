@@ -112,6 +112,9 @@ namespace Tiendas.Infrastructure.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
+                    b.Property<long>("Cantidad")
+                        .HasColumnType("bigint");
+
                     b.Property<long>("IdArticulo")
                         .HasColumnType("bigint");
 

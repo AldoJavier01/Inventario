@@ -9,5 +9,6 @@ namespace Tiendas.Domain.Repositories
 
         Task<IEnumerable<ArticulosVentas>> GetAll();
         void Delete(ArticulosVentas articulo);
+        Task<IEnumerable<ArticulosVentas>> ObtenerPorCodigo(long cod);
     }
 }

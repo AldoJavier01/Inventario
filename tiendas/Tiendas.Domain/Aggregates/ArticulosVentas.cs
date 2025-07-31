@@ -9,7 +9,7 @@ namespace Tiendas.Domain.Aggregates
     public class ArticulosVentas
     {
         private readonly long _id;
-        public long Id { get { return _id; } }
+        public long Id { get; set; }
         public long IdTienda { get;private set; }
         public long IdArticulo { get;private set; }
 
@@ -20,6 +20,16 @@ namespace Tiendas.Domain.Aggregates
 
         public ArticulosVentas(long idTienda, long idArticulo, double precioVenta, string nombreGestor, string talla, long cantidad)
         {
+            IdTienda = idTienda;
+            IdArticulo = idArticulo;
+            PrecioVenta = precioVenta;
+            NombreGestor = nombreGestor;
+            Talla = talla;
+            Cantidad = cantidad;
+        }
+        public ArticulosVentas(long id,long idTienda, long idArticulo, double precioVenta, string nombreGestor, string talla, long cantidad)
+        {
+            Id = id;
             IdTienda = idTienda;
             IdArticulo = idArticulo;
             PrecioVenta = precioVenta;
