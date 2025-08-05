@@ -123,42 +123,62 @@
             }
 
     </style>
+    <style>
+        .highlight {
+            background-color: #fff3cd;
+            font-weight: bold;
+            color: #8B0000;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+    </style>
+
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             const tables = document.querySelectorAll(".searchable-table");
 
             tables.forEach((table, index) => {
-                // Crear wrapper
                 const wrapper = document.createElement("div");
                 wrapper.className = "searchable-wrapper mb-4";
-
-                // Insertar wrapper antes de la tabla
                 table.parentNode.insertBefore(wrapper, table);
                 wrapper.appendChild(table);
 
-                // Crear input de búsqueda
                 const searchInput = document.createElement("input");
                 searchInput.type = "text";
                 searchInput.placeholder = "Buscar...";
                 searchInput.className = "form-control mb-3";
                 searchInput.style.maxWidth = "300px";
-
-                // Insertar input arriba de la tabla dentro del wrapper
                 wrapper.insertBefore(searchInput, table);
 
-                // Lógica de filtrado
                 searchInput.addEventListener("keyup", function () {
                     const searchTerm = this.value.toLowerCase();
                     const rows = table.querySelectorAll("tbody tr");
 
                     rows.forEach(row => {
-                        const text = row.innerText.toLowerCase();
-                        row.style.display = text.includes(searchTerm) ? "" : "none";
+                        const cells = row.querySelectorAll("td");
+                        let match = false;
+
+                        cells.forEach(cell => {
+                            const originalText = cell.textContent;
+                            const lowerText = originalText.toLowerCase();
+
+                            if (searchTerm && lowerText.includes(searchTerm)) {
+                                match = true;
+                                const regex = new RegExp(`(${searchTerm})`, 'gi');
+                                const highlightedText = originalText.replace(regex, '<span class="highlight">$1</span>');
+                                cell.innerHTML = highlightedText;
+                            } else {
+                                cell.innerHTML = originalText; // Reset
+                            }
+                        });
+
+                        row.style.display = match || searchTerm === "" ? "" : "none";
                     });
                 });
             });
         });
     </script>
+
 
 </head>
 <body>
