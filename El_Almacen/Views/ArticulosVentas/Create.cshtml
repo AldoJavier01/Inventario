@@ -1,0 +1,75 @@
+﻿@model El_Almacen.Dto.AgregarVentasDto
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Pasar Articulos a Ventas</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            
+
+            <!-- CAMPO OCULTO para IdArticulo -->
+            <input asp-for="IdArticulo" type="hidden" />
+            <div class="form-group">
+                <label>Artículo seleccionado:</label>
+                <input type="text" class="form-control" value="@Model.IdArticulo" disabled />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="PrecioVenta" class="control-label"></label>
+                <input asp-for="PrecioVenta" class="form-control" />
+                <span asp-validation-for="PrecioVenta" class="text-danger"></span>
+            </div>
+
+            <hr />
+            <h5>Tallas</h5>
+            <div id="tallas-container"></div>
+            <button type="button" class="btn btn-secondary mb-3" onclick="agregarTalla()">+ Agregar talla</button>
+
+            <div class="form-group">
+                <input type="submit" value="Crear" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    <script>
+        let index = 0;
+
+        function agregarTalla() {
+            const container = document.getElementById("tallas-container");
+
+            const html = `
+                            <div class="form-row mb-2" data-index="${index}">
+                                <div class="col">
+                                    <input name="Tallas[${index}].Talla" class="form-control" placeholder="Talla" required />
+                                </div>
+                                <div class="col">
+                                    <input name="Tallas[${index}].Cantidad" class="form-control" placeholder="Cantidad" type="number" required />
+                                </div>
+                                <div class="col-auto">
+                                    <button type="button" class="btn btn-danger" onclick="this.parentElement.parentElement.remove()">Eliminar</button>
+                                </div>
+                            </div>
+                            `;
+
+            container.insertAdjacentHTML("beforeend", html);
+            index++;
+        }
+    </script>
+
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

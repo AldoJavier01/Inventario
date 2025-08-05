@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Página Inicial";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container text-center">
+    <h1 class="mt-5">El Almacen</h1>
+    <div class="list-group mt-4">
+        <a href="@Url.Action("Index", "Articulos")" class="list-group-item list-group-item-action">Agregar Artículos</a>
+        <a href="@Url.Action("Index", "ArticulosVentas")" class="list-group-item list-group-item-action">Ventas</a>
+        <a href="@Url.Action("Informes", "Informes")" class="list-group-item list-group-item-action">Informes</a>
+    </div>
+</div>
+
+<style>
+    .container {
+        max-width: 600px;
+    }
+
+    .list-group-item {
+        font-size: 1.2em;
+        padding: 1.2em;
+        margin-top: 1em;
+        border-radius: 0.25em;
+        transition: background-color 0.3s ease;
+    }
+
+        .list-group-item:hover {
+            background-color: #f8f9fa;
+        }
+</style>

@@ -1,0 +1,134 @@
+﻿@model IEnumerable<ArticulosStock>
+
+@{
+    ViewData["Title"] = "Articulos Stock";
+}
+
+<h1>Articulos</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<<table class="fashion-table searchable-table">>
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.SKU)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Weight)
+            </th>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Tipos)
+            </th>
+          
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Image)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.ActionLink(item.SKU.ToString(), "Details", "ArticulosVentas", new { Id = item.Id })
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category)
+                </td>
+                
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Weight)
+                </td>
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipos)
+                </td>
+                
+               
+                <td>
+                    @if (item.Image != null && item.Image.Length > 0)
+                    {
+                        <img src="data:image;base64,@Convert.ToBase64String(item.Image)" alt="Image" style="max-width: 100px; max-height: 100px; cursor: pointer;" data-toggle="modal" data-target="#imageModal" data-img-url="data:image;base64,@Convert.ToBase64String(item.Image)" />
+                    }
+                    else
+                    {
+                        <span>No Image</span>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { Id = item.Id}) |
+                    @Html.ActionLink("Details", "Details", new {Id = item.Id }) |
+                    @Html.ActionLink("Ventas", "Create", "ArticulosVentas", new { IdArticulo = item.Id }, null)
+                
+                    <a asp-action="Delete" asp-route-id="@item.Id" title="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-trash trash-icon" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zm3-.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z" />
+                            <path fill-rule="evenodd"
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 1 1 0-2H5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2.5a1 1 0 0 1 1 1zM11 1v1H5V1h6z" />
+                        </svg>
+                    </a>
+                </td>
+
+                
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Modal -->
+<div class="modal fade" id="imageModal" tabindex="-1" role="dialog" aria-labelledby="imageModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body text-center">
+                <span>Aldo el tanque </span>
+                <img id="modalImage" src="" alt="Image" style="max-width: 100%; max-height: 400px;" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#imageModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget); // Button that triggered the modal
+            var imageUrl = button.data('img-url'); // Extract info from data-* attributes
+            alert("kjk");
+            var modal = $(this);
+            modal.find('.modal-body #modalImage').attr('src', imageUrl);
+        });
+    });
+</script>

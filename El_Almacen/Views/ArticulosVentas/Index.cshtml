@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Tiendas.Domain.Aggregates.ArticulosVentas>
+
+@{
+    ViewData["Title"] = "Articulos en Ventas";
+}
+
+<h1>Todos los Codigos En Ventas</h1>
+
+@* <p>
+    <a asp-action="Create">Create New</a>
+</p> *@
+<table class="fashion-table searchable-table">
+    <thead>
+        <tr>
+            
+            <th>
+                Codigo
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Cantidad)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Talla)
+            </th>
+            <th>
+                Precio Venta
+            </th>
+           
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+           
+            <td>
+                    @Html.ActionLink(item.NombreGestor.ToString(), "Details", new { Id = item.IdArticulo })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cantidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Talla)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrecioVenta)
+            </td>
+           
+           
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id" title="Eliminar">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-trash trash-icon" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5.5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6zm3-.5a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5z" />
+                            <path fill-rule="evenodd"
+                                  d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 1 1 0-2H5V1a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1h2.5a1 1 0 0 1 1 1zM11 1v1H5V1h6z" />
+                        </svg>
+                    </a>
+                </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
